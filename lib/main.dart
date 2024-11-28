@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cosmos_class/dashboard.dart';
+import 'package:flutter_cosmos_class/forgotPassword/forgot_password.dart';
 
 void main() {
   runApp(const MyApp());
@@ -73,7 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         onChanged: (bool? value) {}),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgotPasswordPage(),
+                          ));
+                    },
                     child: Text('Forgot Password'),
                   ),
                 ],
@@ -86,11 +93,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   String password = passController.text;
                   print(email + " " + password);
 
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DashboardPage(),
-                      ));
+                  if (email.isNotEmpty && password.isNotEmpty) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DashboardPage(),
+                        ));
+                  } else {
+                    print("Field cannot be empty");
+                  }
                 },
                 child: Text('Sign In'),
               ),
