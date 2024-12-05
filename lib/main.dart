@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cosmos_class/dashboard.dart';
 import 'package:flutter_cosmos_class/forgotPassword/forgot_password.dart';
@@ -111,8 +112,34 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.g_mobiledata_rounded),
                 label: Text('Sign  in with Google'),
               ),
-              SizedBox(
-                height: 30.0,
+              SizedBox(height: 30.0),
+              RichText(
+                text: TextSpan(
+                  text: "By logging in you accept our",
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                    TextSpan(
+                      text: ' Terms and Conditions',
+                      style: TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          //tcBottomSheet();
+                          print('termns aand conditions');
+                          showTCBottomSheet();
+                        },
+                    ),
+                    TextSpan(
+                        text: ' and ', style: TextStyle(color: Colors.black)),
+                    TextSpan(
+                      text: 'Privacy Policy',
+                      style: TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          //tcBottomSheet();
+                        },
+                    ),
+                  ],
+                ),
               ),
               Center(
                 child: RichText(
@@ -131,6 +158,38 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+    );
+  }
+
+  void showTCBottomSheet() {
+    showModalBottomSheet<void>(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25.0),
+          topRight: Radius.circular(25.0),
+        ),
+      ),
+      clipBehavior: Clip.hardEdge,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 350,
+          color: Colors.redAccent,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Text('Modal BottomSheet'),
+                ElevatedButton(
+                  child: const Text('Close BottomSheet'),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
