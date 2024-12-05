@@ -36,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
+  bool? isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +72,25 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: CheckboxListTile(
                         controlAffinity: ListTileControlAffinity.leading,
                         title: Text('Remember me'),
-                        value: true,
-                        onChanged: (bool? value) {}),
+                        value: isChecked,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isChecked = value;
+
+                            if (value!) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('You will be remembered'),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content:
+                                          Text('You won\'t be remembered')));
+                            }
+                          });
+                        }),
                   ),
                   TextButton(
                     onPressed: () {
