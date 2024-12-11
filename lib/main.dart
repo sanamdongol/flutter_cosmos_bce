@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cosmos_class/dashboard.dart';
 import 'package:flutter_cosmos_class/forgotPassword/forgot_password.dart';
+import 'package:flutter_cosmos_class/sign_up.dart';
 
 void main() {
   runApp(const MyApp());
@@ -166,6 +167,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(color: Colors.black),
                     children: [
                       TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUp()));
+                            },
                           text: 'Sign up',
                           style: TextStyle(color: Colors.blue)),
                     ],
