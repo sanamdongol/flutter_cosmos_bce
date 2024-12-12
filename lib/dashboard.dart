@@ -25,7 +25,47 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: Icon(Icons.menu),
+            );
+          }
+        ),
+      ),
       body: pages[_currentIndex],
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Container(
+                color: Colors.blue,
+                child: Text('My App'),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.ac_unit),
+              title: Text("Item One"),
+            ),
+            ListTile(
+              leading: Icon(Icons.gpp_bad_rounded),
+              title: Text("Item Two"),
+              trailing: Icon(Icons.night_shelter),
+            ),
+
+            Row(
+              children: [
+                Icon(Icons.ac_unit),
+                Text("Item 2")
+              ],
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.black,
