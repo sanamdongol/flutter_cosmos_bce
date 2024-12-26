@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cosmos_class/tabPages/result_sem_one.dart';
+import 'package:flutter_cosmos_class/tabPages/result_sem_two.dart';
 
 class SemesterDetail extends StatefulWidget {
   const SemesterDetail({super.key});
@@ -11,7 +13,6 @@ class _SemesterDetailState extends State<SemesterDetail> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 2,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
@@ -27,12 +28,8 @@ class _SemesterDetailState extends State<SemesterDetail> {
         ),
         body: const TabBarView(
           children: [
-            Center(
-              child: Icon(Icons.account_circle),
-            ),
-            Center(
-              child: Icon(Icons.account_circle),
-            ),
+           ResultSemOne(),
+           ResultSemTwo(),
             Center(
               child: Icon(Icons.alarm),
             )
