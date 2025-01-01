@@ -10,39 +10,48 @@ class ResultSemOne extends StatefulWidget {
 class _ResultSemOneState extends State<ResultSemOne> {
   @override
   Widget build(BuildContext context) {
-    return DataTable(
-      showBottomBorder: true,
-      columns: [
-        DataColumn(
-          label: Text(
-            "Subject Name",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+    return Column(
+      children: [
+        DataTable(
+          showBottomBorder: true,
+          columns: [
+            DataColumn(
+              label: Text(
+                "Subject Name",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            DataColumn(
+              label: Text(
+                "Grade",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            DataColumn(label: Text('Remarks'))
+          ],
+          rows: [
+            DataRow(cells: [
+              DataCell(Text('Subject 1')),
+              DataCell(Text('A')),
+              DataCell(Text('Good'))
+            ]),
+            DataRow(cells: [
+              DataCell(Text('Subject 2')),
+              DataCell(Text('A-')),
+              DataCell(Text('Good Minus'))
+            ]),
+            DataRow(cells: [
+              DataCell(Text('Subject 3')),
+              DataCell(Text('A')),
+              DataCell(Text('Good '))
+            ]),
+          ],
         ),
-        DataColumn(
-          label: Text(
-            "Grade",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-        DataColumn(label: Text('Remarks'))
-      ],
-      rows: [
-        DataRow(cells: [
-          DataCell(Text('Subject 1')),
-          DataCell(Text('A')),
-          DataCell(Text('Good'))
-        ]),
-        DataRow(cells: [
-          DataCell(Text('Subject 2')),
-          DataCell(Text('A-')),
-          DataCell(Text('Good Minus'))
-        ]),
-        DataRow(cells: [
-          DataCell(Text('Subject 3')),
-          DataCell(Text('A')),
-          DataCell(Text('Good '))
-        ]),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+          Text('Result'), Text('Pass'), Text('CGPA: 3.89')
+        ],),
       ],
     );
   }
