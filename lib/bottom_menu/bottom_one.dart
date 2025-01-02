@@ -59,16 +59,30 @@ class _NoticeBoardViewState extends State<NoticeBoardView> {
     'Project Defense\n7th Sem BCE, Prepare for project defense'
   ];
 
-
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(itemBuilder: (context, index) {
-
-
-    }, separatorBuilder: (context, index) {
-      return SizedBox(height: 10);
-
-    }, itemCount: notices.length);
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      child: ListView.separated(
+        itemCount: notices.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return SizedBox(height: 10);
+        },
+        itemBuilder: (context, index) {
+          return Container(
+            padding: EdgeInsets.all(15.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.0),
+              color:
+              index % 2 == 0 ? Colors.deepPurple[300] : Colors.indigo[300],
+            ),
+            child: Text(notices[index],
+                style: TextStyle(
+                    fontWeight: FontWeight.w500, color: Colors.white)),
+          );
+        },
+      ),
+    );
   }
 }
 
