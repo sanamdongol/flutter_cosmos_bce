@@ -21,6 +21,19 @@ class _BottomOnePageState extends State<BottomOnePage> {
               Text('Subject',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               SubjectList(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Notice Board",
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text("View All"),
+                  )
+                ],
+              ),
+              NoticeBoardView(),
             ],
           ),
         ),
@@ -28,7 +41,6 @@ class _BottomOnePageState extends State<BottomOnePage> {
     );
   }
 }
-
 
 
 class NoticeBoardView extends StatefulWidget {
@@ -50,7 +62,13 @@ class _NoticeBoardViewState extends State<NoticeBoardView> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ListView.separated(itemBuilder: (context, index) {
+
+
+    }, separatorBuilder: (context, index) {
+      return SizedBox(height: 10);
+
+    }, itemCount: notices.length);
   }
 }
 
