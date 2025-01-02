@@ -21,7 +21,6 @@ class _BottomOnePageState extends State<BottomOnePage> {
               Text('Subject',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               SubjectList(),
-
             ],
           ),
         ),
@@ -29,6 +28,32 @@ class _BottomOnePageState extends State<BottomOnePage> {
     );
   }
 }
+
+
+
+class NoticeBoardView extends StatefulWidget {
+  const NoticeBoardView({super.key});
+
+  @override
+  State<NoticeBoardView> createState() => _NoticeBoardViewState();
+}
+
+class _NoticeBoardViewState extends State<NoticeBoardView> {
+  final List<String> notices = <String>[
+    'Holiday\nDear Students our college will remain closed on Jan 1, 2024',
+    'Tour Program\n7th Sem BCE Get ready with your gears for exciting tour @ Jawalakhel Zoo',
+    'Sports Week\nGet Set Go, Let\s collect the medals as much as you can. Prepare for various sports competition',
+    'Food Festival\nEmpty your stomach from today, prepare yourself for the free food festival @ cosmos canteen',
+    'Project Defense\n7th Sem BCE, Prepare for project defense'
+  ];
+
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
 
 class SubjectList extends StatelessWidget {
   const SubjectList({
