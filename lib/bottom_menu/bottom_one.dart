@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cosmos_class/subject_details/arithmetic_maths.dart';
+import 'package:flutter_cosmos_class/subject_details/math_one.dart';
+import 'package:flutter_cosmos_class/subject_details/pst.dart';
 
 class BottomOnePage extends StatefulWidget {
   const BottomOnePage({super.key});
@@ -42,7 +45,6 @@ class _BottomOnePageState extends State<BottomOnePage> {
   }
 }
 
-
 class NoticeBoardView extends StatefulWidget {
   const NoticeBoardView({super.key});
 
@@ -62,7 +64,10 @@ class _NoticeBoardViewState extends State<NoticeBoardView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery
+          .of(context)
+          .size
+          .height,
       child: ListView.separated(
         itemCount: notices.length,
         separatorBuilder: (BuildContext context, int index) {
@@ -86,7 +91,6 @@ class _NoticeBoardViewState extends State<NoticeBoardView> {
   }
 }
 
-
 class SubjectList extends StatelessWidget {
   const SubjectList({
     super.key,
@@ -99,15 +103,12 @@ class SubjectList extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          SubjectView("AM", Colors.blueGrey),
-          SubjectView("M1", Colors.orange),
-          SubjectView("PST", Colors.yellow),
-          SubjectView(
-            "MAD",
-            Colors.green,
-          ),
-          SubjectView("CHE", Colors.purple),
-          SubjectView("RF", Colors.white30),
+          SubjectView("AM", Colors.blueGrey, ArithmeticMath()),
+          SubjectView("M1", Colors.orange, MathOne()),
+          SubjectView("PST", Colors.yellow, PST()),
+          SubjectView("MAD", Colors.green, ArithmeticMath()),
+          SubjectView("CHE", Colors.purple, ArithmeticMath()),
+          SubjectView("RF", Colors.white30, ArithmeticMath()),
         ],
       ),
     );
@@ -117,17 +118,28 @@ class SubjectList extends StatelessWidget {
 class SubjectView extends StatelessWidget {
   String subjectInitial;
   Color color;
+  Widget nameOfAnotherClass;
 
-  SubjectView(this.subjectInitial, this.color);
+  SubjectView(this.subjectInitial, this.color, this.nameOfAnotherClass);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 10.0),
-      child: CircleAvatar(
-        radius: 30,
-        backgroundColor: Colors.black,
-        child: Text(subjectInitial, style: TextStyle(color: color)),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => nameOfAnotherClass),
+          )
+          );
+        },
+        child: CircleAvatar(
+          radius: 30,
+          backgroundColor: Colors.black,
+          child: Text(subjectInitial, style: TextStyle(color: color)),
+        ),
       ),
     );
   }
