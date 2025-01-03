@@ -132,7 +132,6 @@ class SubjectView extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => nameOfAnotherClass),
-          )
           );
         },
         child: CircleAvatar(
