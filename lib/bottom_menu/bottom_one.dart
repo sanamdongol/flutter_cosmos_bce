@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cosmos_class/notice_board_detail.dart';
 import 'package:flutter_cosmos_class/subject_details/arithmetic_maths.dart';
 import 'package:flutter_cosmos_class/subject_details/math_one.dart';
 import 'package:flutter_cosmos_class/subject_details/pst.dart';
@@ -29,7 +30,7 @@ class _BottomOnePageState extends State<BottomOnePage> {
                 children: [
                   Text("Notice Board",
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                   TextButton(
                     onPressed: () {},
                     child: Text("View All"),
@@ -64,26 +65,37 @@ class _NoticeBoardViewState extends State<NoticeBoardView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery
-          .of(context)
-          .size
-          .height,
+      height: MediaQuery.of(context).size.height,
       child: ListView.separated(
         itemCount: notices.length,
         separatorBuilder: (BuildContext context, int index) {
           return SizedBox(height: 10);
         },
         itemBuilder: (context, index) {
-          return Container(
-            padding: EdgeInsets.all(15.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              color:
-              index % 2 == 0 ? Colors.deepPurple[300] : Colors.indigo[300],
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NoticeBoardDetail(
+                        notices[index],
+                        index % 2 == 0
+                            ? Colors.deepPurple[300]
+                            : Colors.indigo[300]),
+                  ));
+            },
+            child: Container(
+              padding: EdgeInsets.all(15.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: index % 2 == 0
+                    ? Colors.deepPurple[300]
+                    : Colors.indigo[300],
+              ),
+              child: Text(notices[index],
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500, color: Colors.white)),
             ),
-            child: Text(notices[index],
-                style: TextStyle(
-                    fontWeight: FontWeight.w500, color: Colors.white)),
           );
         },
       ),
@@ -130,8 +142,7 @@ class SubjectView extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => nameOfAnotherClass),
+            MaterialPageRoute(builder: (context) => nameOfAnotherClass),
           );
         },
         child: CircleAvatar(
